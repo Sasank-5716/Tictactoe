@@ -17,3 +17,6 @@ LINE_COLOR = (50, 50, 50)
 board = [['', '', ''], ['', '', ''], ['', '', '']]
 current_player = 'X'
 game_over = False
+
+# Font
+font = pygame.font.Font(None, 120)
