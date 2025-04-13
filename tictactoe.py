@@ -71,6 +71,25 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    
+
+        if event.type == pygame.MOUSEBUTTONDOWN and not game_over:
+            mouseX, mouseY = pygame.mouse.get_pos()
+            clicked_row = mouseY // (HEIGHT // 3)
+            clicked_col = mouseX // (WIDTH // 3)
+            
+            if board[clicked_row][clicked_col] == '':
+                board[clicked_row][clicked_col] = current_player
+                
+                winner = check_winner()
+                if winner:
+                    game_over = True
+                    if winner == 'Tie':
+                        result_text = "It's a Tie!"
+                    else:
+                        result_text = f"{winner} wins!"
+                else:
+                    current_player = 'O' if current_player == 'X' else 'X'
+
+                    
     draw_board()
     pygame.display.flip()
