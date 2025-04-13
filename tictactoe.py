@@ -65,3 +65,12 @@ def check_winner():
         return 'Tie'
     
     return None
+
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+    
+    draw_board()
+    pygame.display.flip()
