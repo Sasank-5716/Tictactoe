@@ -90,6 +90,13 @@ while True:
                 else:
                     current_player = 'O' if current_player == 'X' else 'X'
 
-                    
+
+        if event.type == pygame.KEYDOWN and game_over:
+            if event.key == pygame.K_r:
+                # Reset game
+                board = [['', '', ''], ['', '', ''], ['', '', '']]
+                current_player = 'X'
+                game_over = False  
+
     draw_board()
     pygame.display.flip()
