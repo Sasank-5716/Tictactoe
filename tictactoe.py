@@ -99,4 +99,12 @@ while True:
                 game_over = False  
 
     draw_board()
+
+    if game_over:
+        font = pygame.font.Font(None, 50)
+        text = font.render(result_text, True, BLACK)
+        restart_text = font.render("Press R to restart", True, BLACK)
+        screen.blit(text, (WIDTH // 2 - text.get_width() // 2, HEIGHT // 2 - 50))
+        screen.blit(restart_text, (WIDTH // 2 - restart_text.get_width() // 2, HEIGHT // 2 + 20))
+        
     pygame.display.flip()
