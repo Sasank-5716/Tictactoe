@@ -42,3 +42,26 @@ def draw_board():
                 y_pos = row * HEIGHT // 3 + HEIGHT // 6
                 text = font.render('O', True, BLACK)
                 screen.blit(text, (x_pos - text.get_width() // 2, y_pos - text.get_height() // 2))
+
+def check_winner():
+    # Check rows
+    for row in range(3):
+        if board[row][0] == board[row][1] == board[row][2] != '':
+            return board[row][0]
+    
+    # Check columns
+    for col in range(3):
+        if board[0][col] == board[1][col] == board[2][col] != '':
+            return board[0][col]
+    
+    # Check diagonals
+    if board[0][0] == board[1][1] == board[2][2] != '':
+        return board[0][0]
+    if board[0][2] == board[1][1] == board[2][0] != '':
+        return board[0][2]
+    
+    # Check for tie
+    if all(board[row][col] != '' for row in range(3) for col in range(3)):
+        return 'Tie'
+    
+    return None
